@@ -21,7 +21,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 
 import { DishService } from './service/dish.service';
-import { PromotionService } from './service/Promotion.service';
+import { PromotionService } from './service/promotion.service';
 
 @NgModule({
   declarations: [
