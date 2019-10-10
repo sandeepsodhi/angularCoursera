@@ -22,6 +22,8 @@ import { FooterComponent } from './footer/footer.component';
 
 import { DishService } from './service/dish.service';
 import { PromotionService } from './service/promotion.service';
+import { LeaderService } from './service/leader.service';
+import { LoginComponent } from './login/login.component'; 
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { PromotionService } from './service/promotion.service';
     FooterComponent,
     AboutComponent,
     HomeComponent,
-    ContactComponent
+    ContactComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,7 @@ import { PromotionService } from './service/promotion.service';
     MatCardModule,
     MatButtonModule
   ],
-  providers: [DishService, PromotionService],
+  providers: [DishService, PromotionService, LeaderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
