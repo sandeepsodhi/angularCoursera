@@ -34,7 +34,7 @@
   </mat-card>
 
   <mat-card *ngIf="leader" fxFlex>
-        <mat-card-header>
+      <mat-card-header>
           <div mat-card-avatar></div>
           <mat-card-title>
             <h3>{{leader.name | uppercase}}</h3>
@@ -44,7 +44,15 @@
         <mat-card-content>
           <p>{{leader.description}}
           </p>
-        </mat-card-content>
-      </mat-card>
-
+      </mat-card-content>
+  </mat-card>
+  <div [hidden]="dish">
+      <mat-spinner></mat-spinner><h4>Loading... Please wait</h4>
+  </div>
+  <div [hidden]="promotion">
+      <mat-spinner></mat-spinner><h4>Loading... Please wait</h4>
+  </div>
+  <div [hidden]="leader">
+      <mat-spinner></mat-spinner><h4>Loading... Please wait</h4>
+  </div>
 </div>

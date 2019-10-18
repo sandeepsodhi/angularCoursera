@@ -11,7 +11,7 @@ import { DishService } from '../service/dish.service';
 
 export class MenuComponent implements OnInit {
 
-	dishes : Dish[] = DISHES;
+	dishes : Dish[];
 	selectedDish : Dish;
 
 	onSelect(dish : Dish){
