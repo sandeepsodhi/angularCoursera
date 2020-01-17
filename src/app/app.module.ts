@@ -30,11 +30,12 @@ import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { LoginComponent } from './login/login.component'; 
 
 import { DishService } from './service/dish.service';
 import { PromotionService } from './service/promotion.service';
 import { LeaderService } from './service/leader.service';
-import { LoginComponent } from './login/login.component'; 
+import { ProcessHTTPMsgService } from './service/process-httpmsg.service';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { LoginComponent } from './login/login.component';
     DishService, 
     PromotionService, 
     LeaderService,
+    ProcessHTTPMsgService,
     { provide: 'baseURL', useValue: baseURL }
   ],
   bootstrap: [AppComponent]
