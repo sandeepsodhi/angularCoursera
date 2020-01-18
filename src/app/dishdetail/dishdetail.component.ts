@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { switchMap } from 'rxjs/operators';
 import { Comment } from '../shared/comment';
+import { MatGridTileHeaderCssMatStyler } from '@angular/material';
 
 @Component({
   selector: 'app-dishdetail',
@@ -17,6 +18,7 @@ import { Comment } from '../shared/comment';
 export class DishdetailComponent implements OnInit {
 
   dish : Dish;
+  dishcopy: Dish;
   dishIds: string[];
   prev: string;
   next: string;
@@ -49,28 +51,26 @@ export class DishdetailComponent implements OnInit {
     @Inject('baseURL') private baseURL
     ) {
       this.createForm();
-     }
+  }
 
-     ngOnInit() {
-      this.dishService.getDishIds().subscribe(dishIds => this.dishIds= dishIds, errmess => this.errMess = <any>errmess);
-      this.route.params.pipe(switchMap((params:Params)=>this.dishService.getDish(params['id'])))
-        .subscribe(dish=> {this.dish = dish; this.setPrevNext(dish.id); }, errmess => this.errMess = <any>errmess);
-      
-    }
-  
-     createForm() {
-      this.commentForm = this.fb.group({
-        author: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)] ],
-        comment: ['', [Validators.required, Validators.minLength(1)] ],
-        rating: 5
-      });
-  
-      this.commentForm.valueChanges
-      .subscribe(data => this.onValueChanged(data));
-  
-      this.onValueChanged(); // (re)set validation messages now
-    }
+  ngOnInit() {
+    this.dishService.getDishIds().subscribe(dishIds => this.dishIds= dishIds, errmess => this.errMess = <any>errmess);
+    this.route.params.pipe(switchMap((params:Params)=>this.dishService.getDish(params['id'])))
+    .subscribe(dish=> {this.dish = dish; this.dishcopy = dish; this.setPrevNext(dish.id); }, errmess => this.errMess = <any>errmess);
+  }
 
+  createForm() {
+    this.commentForm = this.fb.group({
+      author: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)] ],
+      comment: ['', [Validators.required, Validators.minLength(1)] ],
+      rating: 5
+  });
+
+  this.commentForm.valueChanges
+  .subscribe(data => this.onValueChanged(data));
+
+  this.onValueChanged(); // (re)set validation messages now
+  }
 
   onValueChanged(data?: any) {
     if (!this.commentForm) { return; }
@@ -102,6 +102,7 @@ export class DishdetailComponent implements OnInit {
   }
 
   onSubmit() {
+
     this.comment = this.commentForm.value;
     this.comment.date = new Date().toISOString();
     this.dish.comments.push(this.comment);
@@ -112,6 +113,16 @@ export class DishdetailComponent implements OnInit {
       comment: '',
       rating: 5
     });
+
+    this.dishcopy.comments.push(this.comment);
+    this.dishService.putDish(this.dishcopy)
+      .subscribe(dish => {
+        this.dish = dish; this.dishcopy = dish
+      },
+      errmess => {this.dish=null; this.dishcopy = null; this.errMess = <any>errmess;
+    });
+
+
   }
 
 }
