@@ -224,5 +224,36 @@
       "description": "Award winning three-star Michelin chef with wide International experience having worked closely with whos-who in the culinary world, he specializes in creating mouthwatering Indo-Italian fusion experiences. He says, Put together the cuisines from the two craziest cultures, and you get a winning hit! Amma Mia!"
     }
   ],
-  "feedback": []
+  "feedback": [
+    {
+      "firstname": "Sandeep",
+      "lastname": "Sodhi",
+      "telnum": "6478317765",
+      "email": "sandeepsodhi15@icloud.com",
+      "agree": true,
+      "contactType": "Tel",
+      "message": "THIS game was awesome and fun for me ",
+      "id": 1
+    },
+    {
+      "firstname": "Dhruv",
+      "lastname": "Mukharjee",
+      "telnum": "7989878986",
+      "email": "dhruvmukherjee70@gmail.com",
+      "agree": true,
+      "contactType": "Tel",
+      "message": "The new version of this is a must have for anyone ",
+      "id": 2
+    },
+    {
+      "firstname": "Sandeep",
+      "lastname": "Sodhi",
+      "telnum": "9868945645",
+      "email": "sandeepsodhi@live.com",
+      "agree": true,
+      "contactType": "Tel",
+      "message": "I'm going back home now and then we will go back to our house ",
+      "id": 3
+    }
+  ]
 }
